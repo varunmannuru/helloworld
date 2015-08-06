@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<style>
+body{
+  padding:20px;
+}
+.search{
+  margin-left:10px;
+}
+</style>
+<meta charset=utf-8 />
+<title>Add Frnd</title>
+</head>
+
+<body ng-controller="ctrl">
+<h2>Friend<span ng-show="temp">?<small class="muted"><em > (only {{rows.length-1}} actually....)</em></small></span></h2>
+  <form class="form-horizontal">
+  <span ng-class="{'input-append':addName}">
+    <input id="add" type="text" placeholder="Another one ?" ng-model="addName" ng-change="addTemp()"/>
+    <input type="submit" class="btn btn-primary" ng-click="addRow()" ng-show="addName" value="+ add"/>
+    </span>
+
+    <span class="search input-prepend" ng-class="{'input-append':search}">
+      <span class="add-on"><i class="icon-search"></i></span>
+  <input type="text" class="span2"  placeholder="Search" ng-model="search">
+    <button type="submit" class="btn btn-inverse" ng-click="search=''" ng-show="search" value="+ add"><i class="icon-remove icon-white"></i></button>
+</span>
+  </form>
+  <table  class="table table-striped">
+    <tr ng-repeat="row in rows | filter : search"  ng-class="{'muted':isTemp($index)}">
+      <td>{{$index+1}}</td>
+      <td>{{row}}</td>
+      <td>
+        <button class="btn btn-danger btn-mini" ng-click="deleteRow(row)" ng-hide="isTemp($index)"><i class="icon-trash icon-white"></i></button>
+      </td>
+    </tr>
+  </table>
+  <script>
+function ctrl($scope){
+  $scope.rows = [];
+  $scope.temp = false;
+  
+  $scope.addRow = function(){
+    $scope.temp = false;
+    $scope.addName="";
+  };
+  
+  $scope.deleteRow = function(row){
+    $scope.rows.splice($scope.rows.indexOf(row),1);
+  };
+  
+  $scope.plural = function (tab){
+    return tab.length > 1 ? 's': ''; 
+  };
+  
+  $scope.addTemp = function(){
+    if($scope.temp) $scope.rows.pop(); 
+    else if($scope.addName) $scope.temp = true;
+    
+    if($scope.addName) $scope.rows.push($scope.addName);
+    else $scope.temp = false;
+  };
+  
+  $scope.isTemp = function(i){
+    return i==$scope.rows.length-1 && $scope.temp;
+  };
+  
+}
+</script>  
+</body>
+</html>
