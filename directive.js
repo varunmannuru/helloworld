@@ -6,7 +6,7 @@ app.directive('installApp', function() {
     
     link: function(scope, element, attrs) {
       scope.buttonText = "Install",
-      scope.installed = false,
+      scope.installed = true,
 
       scope.download = function() {
         element.toggleClass('btn-active')
@@ -15,7 +15,7 @@ app.directive('installApp', function() {
           scope.installed = false;
         } else {
           scope.buttonText = "Uninstall";
-          scope.installed = true;
+          scope.installed = false;
         }
       }
     }
