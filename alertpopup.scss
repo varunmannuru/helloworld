@@ -1,0 +1,83 @@
+$critical-color: #f00;
+
+.global-alert {
+  position: absolute;
+  left: 30%;
+  top: 0px;
+  width: 40%;
+  z-index: 9000;
+  display: block !important;
+}
+
+.global-error {
+  @extend .global-alert;
+  background-color: $critical-color !important;
+  color: $secondary-color;
+}
+
+.global-success {
+  @extend .global-alert;
+  background-color: $success-color !important;
+  color: $secondary-color;
+}
+
+.global-pending {
+  @extend .global-alert;
+  background-color: $pending-color !important;
+  color: $secondary-color;
+}
+
+.alert-popup {
+  -webkit-transition: 1s linear all;
+  transition: 1s linear top, all;
+  -webkit-transition: 0s linear display;
+  transition: 0s linear display;
+  top: 0;
+  min-width: 500px;
+  max-width: 800px;
+  &.ng-hide {
+    top: -150px;
+  }
+  &.ng-hide-add, &.ng-hide-remove {
+    display: block !important;
+  }
+
+  padding: 20px;
+  font-size: 1rem;
+  border: none;
+  box-shadow: 4px 4px 4px #888888;
+
+  .message {
+    width: 80%;
+    margin: auto;
+    display:inline-block;
+
+    max-height: 100px;
+    overflow-y: auto;
+
+    .bold {
+        font-weight: bold;
+    }
+  }
+
+  .close {
+    float: right;
+    display: inline-block;
+    font-size: 1rem;
+    color: $secondary-color;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    margin-left: 15px;
+  }
+
+  .queue-btn {
+    display: inline-block;
+    float: right;
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+
+
