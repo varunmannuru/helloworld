@@ -1,0 +1,18 @@
+<div class="alert-popup global-{{state}}"
+     ng-cloak
+     id="alert-popup"
+     ng-show="show.popup">
+
+  <div class="message">
+    <div class="bold">{{message}}</div>
+    <div>{{submessage}}</div>
+  </div>
+
+  <a href="#" class="close" ng-show="show.closeButton"
+     ng-click="hidePopover()">
+    <i class="cv-icon-x"></i>
+  </a>
+
+  <a href ng-click="refreshView()" class="queue-btn" ng-show="show.viewButton" translate>QUEUE.VIEW</a>
+
+</div>
