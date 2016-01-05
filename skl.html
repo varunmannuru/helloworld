@@ -1,0 +1,152 @@
+<?php
+require_once("global.php");
+require_once("header.php");
+
+$GroupCard       = new GroupCard(true);
+$GroupCardSS     = new GroupCardSS(true);
+$UserPropsCard   = new UserPropsCard(true);
+$DatePicker      = new DatePicker(true);
+$Popover         = new Popover(true);
+$Filter          = new Filter(true);
+$FilterBox       = new FilterBox(true);
+$SearchBar       = new SearchBar(true);
+$JQXTreeGrid     = new JQXTreeGrid(true);
+$JQXTree         = new JQXTree(true);
+$SelectAllRow    = new SelectAllRow(true);
+$ButtonIconLabel = new ButtonIconLabel(true);
+$Tabset          = new Tabset(true);
+$StatusBar       = new StatusBar(true);
+$Details         = new Details(true);
+$InputText       = new InputText(true);
+$InputRadio      = new InputRadio(true);
+$InputCheckbox   = new InputCheckbox(true);
+$Textarea        = new Textarea(true);
+$LeftNavBar      = new LeftNavBar(true);
+$ILIcon          = new ILIcon(true);
+$UserCard        = new UserCard(true);
+$WizardSteps     = new WizardSteps(true);
+$Typeahead       = new Typeahead(true);
+
+$LeftNavBar->render(true);
+
+?><div class="container-fluid outer-wrap"><header>
+        <h2>
+            <?php
+            $ILIcon->render(true, array("ilicon-chevron-left", "", "#", "", "Go Back"));
+            echo "Lorem Ipsum Dolar";
+            $ILIcon->render(true, array("ilicon-info", "", "#", "", "Information"));
+            ?>                        
+        </h2>
+        <?php
+        //$exchangeTabs[4][2] = true;
+        $Tabset->render(true,array(array("JQXTrees", "#jqx", true),array("JQXTree Small", "#jqx-small", false),array("Modals", "#modals", false),array("Wizard", "#wizard", false),array("Nested Tree", "#treenest", false),array("Popover", "#poptab", false),array("Collapse 3/9", "#col39", false),array("Collapse 5/7", "#col57", false)));
+        ?>
+        
+    </header><div class="content">
+        <div class="tab-content">
+            <div id="jqx" class="tab-pane fade in active">
+                <?php include('inc_topbuttons.php'); ?>
+                <div class="container-fluid">
+                    <div class="row collapsible" data-colstate="expanded">
+                        <div class="col-md-3 page-grid-collapse-box"><div class="page-grid-collapse-header text-right"><?php $ILIcon->render(true,array("ilicon-chevron-two-left","","",'data-function="collapseTree"'));?></div><div data-content="tree"><?php $JQXTree->render(true); ?></div></div>
+                        <div class="col-md-9">
+                            <?php $FilterBox->render(true);?>
+                            <div class="page-grid-main-content" aria-live="polite"><?php $SelectAllRow->render(true);$JQXTreeGrid->render(true,array("treeGridUsers")); ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="jqx-small" class="tab-pane fade in">
+                <?php include('inc_topbuttons.php'); ?>
+                <div class="container-fluid">
+                    <div class="row collapsible" data-colstate="expanded">
+                        <div class="col-md-3 page-grid-collapse-box"><div class="page-grid-collapse-header text-right"><?php $ILIcon->render(true,array("ilicon-chevron-two-left","","",'data-function="collapseTree"'));?></div><div data-content="tree"><?php $JQXTree->render(true); ?></div></div>
+                        <div class="col-md-9">
+                            <?php $FilterBox->render(true);?>
+                            <div class="page-grid-main-content" aria-live="polite"><?php $SelectAllRow->render(true);?>
+                                <?php $JQXTreeGrid->render(true,array("treeGridUsersSmall jqxtreeUserPanelToggle")); ?><div class="userInfoPanel hidden"><div class="infobox"><?php $UserCard->render(true);?></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="modals" class="tab-pane fade in">
+                <?php include('inc_topbuttons.php'); ?>
+                <div class="container-fluid">
+                    <div class="row collapsible" data-colstate="expanded">
+                        <div class="col-md-3 page-grid-collapse-box"><div class="page-grid-collapse-header text-right"><?php $ILIcon->render(true,array("ilicon-chevron-two-left","","",'data-function="collapseTree"'));?></div><div data-content="tree"><?php $JQXTree->render(true); ?></div></div>
+                        <div class="col-md-9">
+                            <?php $FilterBox->render(true);?>
+                            <div class="page-grid-main-content" aria-live="polite"><?php $ButtonIconLabel->render(true, array("Fullscreen Modal", "btn-primary", "ilicon-add", "", 'data-toggle="modal" data-target=".exmodal1"')); ?><br>
+                            <?php $ButtonIconLabel->render(true, array("Halfscreen Modal", "btn-primary", "ilicon-add", "", 'data-toggle="modal" data-target=".exmodal2"')); ?><br>
+                            <?php $ButtonIconLabel->render(true, array("Thirdscreen Modal", "btn-primary", "ilicon-add", "", 'data-toggle="modal" data-target=".exmodal3"')); ?><br>
+                            <?php $ButtonIconLabel->render(true, array("Quarterscreen Modal", "btn-primary", "ilicon-add", "", 'data-toggle="modal" data-target=".exmodal4"')); ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <div id="wizard" class="tab-pane fade in">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-grid-main-content" aria-live="polite"><?php $ButtonIconLabel->render(true, array("Navigable Wizard Steps Modal", "btn-primary", "ilicon-add", "", 'data-toggle="modal" data-target=".exWizModal"')); ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            <div id="treenest" class="tab-pane fade in">
+                <?php include('inc_topbuttons.php'); ?>
+                <div class="container-fluid">
+                    <div class="row collapsible" data-colstate="expanded">
+                        <div class="col-md-3 page-grid-collapse-box"><div class="page-grid-collapse-header text-right"><?php $ILIcon->render(true,array("ilicon-chevron-two-left","","",'data-function="collapseTree"'));?></div><div data-content="tree"><?php $JQXTree->render(true,array("jqxTreeNest")); ?></div></div>
+                        <div class="col-md-9">
+                            <?php $FilterBox->render(true);?>
+                            <div class="page-grid-main-content" aria-live="polite">
+                                <div class="infobox"><h4>THIS IS MY HEADER</h4><div class="infocontent">THIS IS MY BODY - infobox test</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>           
+            <div id="poptab" class="tab-pane fade in">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-grid-main-content" aria-live="polite"><?php 
+                            $ButtonIconLabel = new ButtonIconLabel(true);
+                            $ButtonIconLabel->render(false);
+                            $Popover = new Popover(true); $Popover->render(true,array("ilicon-chevron-down", array("Properties", "Remove User", "Move to", "<hr>", "Permissions", "Multi-user Coverage Report", "<hr>", randomLipsum(50),array(array("<input type='checkbox' name='ch-ex'>", "Checkbox Example")),$ButtonIconLabel->getComponentHTML()), "","Popover w a button inside"));?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>                        
+            <div id="col39" class="tab-pane fade in">
+                <?php include('inc_topbuttons.php'); ?>
+                <div class="container-fluid">
+                    <div class="row collapsible" data-colstate="expanded">
+                        <div class="col-md-3 page-grid-collapse-box"><div class="page-grid-collapse-header text-right"><?php $ILIcon->render(true,array("ilicon-chevron-two-left","","",'data-function="collapseTree"'));?></div><div data-content="tree" class="page-grid-collapse-body"><?php $JQXTree->render(true); ?></div></div>
+                        <div class="col-md-9">
+                            <?php $FilterBox->render(true);?>
+                            <div class="page-grid-main-content" data-name="grid-main-content" aria-live="polite"><?php $SelectAllRow->render(true);$JQXTreeGrid->render(true,array("treeGridUsersSmall")); ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            <div id="col57" class="tab-pane fade in">
+                <?php include('inc_topbuttons.php'); ?>
+                <div class="container-fluid">
+                    <div class="row collapsible" data-colstate="expanded">
+                        <div class="col-md-5 page-grid-collapse-box"><div class="page-grid-collapse-header text-right"><?php $ILIcon->render(true,array("ilicon-chevron-two-left","","",'data-function="collapseTree"'));?></div><div data-content="tree"><?php $JQXTree->render(true); ?></div></div>
+                        <div class="col-md-7">
+                            <?php $FilterBox->render(true);?>
+                            <div class="page-grid-main-content" aria-live="polite"><?php $SelectAllRow->render(true);$JQXTreeGrid->render(true,array("treeGridUsersSmall")); ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+        </div>
+    <?php
+    include("footer.php");?>
+</body></html>
