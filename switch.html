@@ -1,0 +1,42 @@
+<?php
+require_once("global.php");
+require_once("header.php");
+
+include('inc_allcomps.php');
+
+$LeftNavBar->render(true);
+?><div class="container-fluid outer-wrap"><header>
+        <h2>
+            <?php
+            $ILIcon->render(true, array("ilicon-chevron-left", "", "#", "", "Go Back"));
+            echo "Lorem Ipsum Dolar";
+            ?>
+        </h2>
+        <?php
+        $Tabset->render(true,array(array("Documents", "#documents", true),array("Tasks", "#tasks", false),array("Reports", "#reports", false),array("Q&A", "#qa", false),array("Users & Groups", "#ug", false),array("Maintenance", "#maintenance", false)));
+        ?>
+
+    </header><div class="content">
+        <div class="tab-content">
+            <div id="jqx" class="tab-pane fade in active">
+                <?php include('inc_topbuttons_dp.php'); ?>
+                <div class="container-fluid">
+                    <div class="row collapsible" data-colstate="expanded">
+                        <div class="col-md-3 page-grid-collapse-box"><div class="page-grid-collapse-header text-right"><?php $ILIcon->render(true,array("ilicon-chevron-two-left","","",'data-function="collapseTree"'));?></div><div data-content="tree" class="page-grid-collapse-body"><?php $JQXTree->render(true); ?></div></div>
+                        <div class="col-md-9">
+                            <div class="page-grid-main-content" aria-live="polite"><?php
+                                $FilterBox->render(true);
+                                $Breadcrumb->render(false,array(array(array('All Folders', '#'), array('3.0 HR', '#')), ">"));
+                                $Toggle->render(false);
+                                $AlertBadge->render(false);
+                                $DataGridHeader->render(true,array(array($Breadcrumb),array("Permissions",$Toggle,$AlertBadge),false));$JQXTreeGrid->render(true,array("treeGridUsers")); ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <?php
+    include("footer.php");?>
+    </body></html>
