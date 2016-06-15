@@ -1,0 +1,48 @@
+<div>
+
+  <div class="vitals-points">
+    <div>
+         <span ng-repeat="n in dotsArray track by $index" ng-style="{'margin-left': (($index + 1)*cnt)+'%'}" class="sceneIndicator1"></span>
+         <!--  <span ng-style="{margin-left: '20%'}" class="sceneIndicator2"></span>
+         <span ng-style="{margin-left: '20%'}" class="sceneIndicator3"></span>
+         <span ng-style="{margin-left: '20%'}" class="sceneIndicator4"></span>  -->
+    </div>
+    <div class="vitals-points-bar">
+
+      <div ng-style="{width:velocityPoints1+'%'}">&nbsp;</div>
+    </div>
+    <span ng-show="showSparkleBar" class="vitals-sparkleBar" ng-style="{left:velocityPoints2+'%'}"></span>
+    <div ng-show="showPointsBox &amp;&amp; pointsEarnedForLesson > 0" class="vitals-points-box" ng-style="{left:velocityPoints+'%'}">
+     <table>
+          <tr><td >
+      <div class="vitals-points-box-inner">
+       
+        <span  points-countup></span>
+        <span ng-show="pointCountReady" class="vitals-points-icon">&nbsp;</span>
+        <div 
+          class="burst-green" ng-show="pointCountReady"
+          ng-class="{'showBursts':showBurstsGreen,'hideBursts':hideBurstsGreen}">&nbsp;</div>
+        <div ng-show="pointCountReady && showPointsEarned"
+          class="icon-pointsEarned" 
+          ng-class="{'showPointsEarnedText':showPointsEarnedText,'hidePointsEarnedText':hidePointsEarnedText}">&nbsp;</div>
+             </div>
+     </td><td class="hintsBorderLine">
+<div class="vitals-hints-box-inner">
+        <span ng-cloak>{{ctx.hintCount}}</span>
+        <span ng-show="pointCountReady" class="vitals-hints-icon">&nbsp;</span>
+        <div 
+          class="burst-blue" ng-show="pointCountReady"
+          ng-class="{'showBursts':showBursts,'hideBursts':hideBursts}"></div>
+        <div 
+          class="icon-hintsUsed" ng-show="pointCountReady"
+          ng-class="{'showHintsText':showHintsText,'hideHintsText':hideHintsText}"></div>
+      </div>
+     
+      </td></tr></table>
+
+      
+    </div> 
+     <span ng-show="showPointsBox" class="vitals-points-number" ng-style="{left:velocityPoints+'%'}">{{ctx.velocityPoints}}</span>  
+  </div>
+
+</div>
