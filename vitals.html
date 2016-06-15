@@ -1,0 +1,68 @@
+<div>
+  
+  <div class="-tint-overlay">&nbsp;</div>
+  
+  <div ng-hide="isUIReady() || isUIError()" class="-loadingVitals" guide>
+    <span class="-loading-gear spin-left">&nbsp;</span>
+    <span class="-loading-gear spin-right">&nbsp;</span>
+    <span class="-loading-v">&nbsp;</span>
+  </div>
+
+  <div ng-show="isUIError()" class="-error-container">
+    <h3>Ooops!  There seems to be a problem loading your Vital Points.</h3>
+    <next-button class="-next-btn-error" ng-click="gotoLessons()"></next-button>
+  </div>
+  
+  <div class="-outer-container" ng-show="isUIReady()" guide>
+
+    <div class="-inner-container" ng-show="isUIReady()" guide>
+      <h1 guide>Velocity Vitals</h1>
+     <!--  <h2 guide>{{getPraiseMessage()}}</h2> -->
+      <div ng-show="showSkills" class="-activity-block" guide>
+        <span class="-t1">Activity Completed:&nbsp;</span>
+        <span ng-bind-html="ctx.skills"></span>
+      </div>
+     
+      <div class="-spine-bg">
+        <ui-spine 
+          ng-model="character" 
+          name="{{characterAssets.name}}"
+          skeleton="characterAssets.skeleton"
+          width="273"
+          height="261">
+        </ui-spine>
+      </div>
+      <img ng-if="isStampSummaryPage" ng-click="toggleSidePanelVideo(true)" ng-src={{stampPath}} class="stamp">
+      <points-countup></points-countup>
+     <points-bar></points-bar>
+
+    </div>
+    <div ng-class="{'-ellipse':!isCircle,'-circle':isCircle}">{{totalStudentPoints | currency:"":0}}</div>
+    <span class="-next-btn1" ng-show="showNextBtn1"></span>
+    <next-button class="-next-btn" ng-click="gotoLessons()" ng-show="showNextBtn"></next-button>
+
+    <icon-button class="--large --medal -medal-btn"></icon-button>
+    
+  </div>
+
+  <div class="-sidePanelVideo popup-modal" ng-show="showSidePanelVideo">
+    <div class="popup-modal-content">
+      <div class="header">
+        <icon-button class="pull-right --close -modalClose" ng-click="toggleSidePanelVideo(false)"></icon-button>
+      </div>
+      <div class="popup-modal-video" ng-style="{'background-image':'url('+videoPath +')'}">
+         <!-- <video-player
+          ng-if="showSidePanelVideo"
+          context="playerStatus"
+          player="player"
+          video="{{currentVideo.src}}"
+          uuid="{{currentVideo.uuid}}"
+          autoplay="{{currentVideo.autoplay}}"
+          width="640"
+          height="360"
+          disableFullscreen="true"></video-player> -->
+      </div>
+    </div>
+  </div>
+
+</div>
