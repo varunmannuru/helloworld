@@ -1,0 +1,35 @@
+{
+   "jsonrpc" : "2.0",
+   "id" : "123",
+   "result" : {
+      "messages" : [
+      ],
+      "skills" : [
+         {
+            "nameId" : "velocityQuickCheck4",
+            "name" : "Velocity Quick Check 4",
+            "value" : "Velocity Quick Check 4"
+         },
+         {
+            "nameId" : "velocityQuickCheck3",
+            "name" : "Velocity Quick Check 3",
+            "value" : "Velocity Quick Check 3"
+         },
+         {
+            "nameId" : "velocityQuickCheck1",
+            "name" : "Velocity Quick Check 1",
+            "value" : "Velocity Quick Check 1"
+         }
+      ],
+      "hintCount" : 100,
+      "pointsEarnedForLesson" : 80,
+      "pointsEarnedForScene" :30,
+      "pointsRequiredForScene" : 90,
+      "qualityScore" : 30,
+      "ptScore" : 0,
+      "success" : true,
+      "badRequest" : false,
+      "totalStudentPoints":22
+     
+   }
+}
