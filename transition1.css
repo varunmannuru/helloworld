@@ -1,0 +1,332 @@
+/*** ***/
+. {
+  font-family: 'SourceSansProReg';
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  background-size: cover;
+  /*background-size: 2500px 1080px;*/
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-image: url("assets/images/bg_endTransition.svg");
+  background-color: #e0e3f0;
+}
+
+/*.vslapp_skin-Snow . {
+  background-image: url("assets/images/bg_endTransition.svg");
+}*/
+/*.vslapp_skin-Planet . {
+  background-image: url("assets/images/vel_bg_ornagePlanet.svg");
+}
+.vslapp_skin-Underwater . {
+  background-image: url("assets/images/vel_bg_underwater.svg");
+}*/
+
+.-error-container {
+  border-radius: 30px;
+  padding: 40px 30px;
+  width: 968px;
+  border: 1px solid transparent;
+  z-index: 89;
+  position: fixed;
+  left: 50%;
+  top: 40px;
+  margin-left: -484px;
+  background-color: #fdfdfd;
+}
+.-error-container.ng-hide-remove {
+  -webkit-transition: linear 0.3s;
+  transition: linear 0.3s;
+  -webkit-transition-delay: 0.9s;
+  transition-delay: 0.9s;
+  opacity: 1;
+  top: 40px;
+}
+.-error-container.ng-hide {
+  opacity: 0;
+  top: -70px;
+}
+.-next-btn-error {
+  float: right;
+  background-size: 38px 38px;
+  -webkit-animation-name: nextshow;
+  animation-name: nextshow;
+  -webkit-animation-duration: .750s;
+  animation-duration: .750s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+.-next-btn-error:not([disabled]):hover {
+  -webkit-transform:scale(1.2);
+  transform:scale(1.2);   
+}
+
+
+.-loadingVitals {
+  height: 593px;
+  width: 968px;
+  border: 1px solid transparent;
+  z-index: 89;
+  position: fixed;
+  left: 50%;
+  top: 40px;
+  margin-left: -484px;
+  text-align: center;
+  line-height: 593px;
+  color: #000;
+  font-weight: bold;
+}
+.-loadingVitals.ng-hide-remove {
+  -webkit-transition: linear 0.2s;
+  transition: linear 0.2s;
+  opacity: 1;
+}
+.-loadingVitals.ng-hide {
+  -webkit-transition: linear 0.2s;
+  transition: linear 0.2s;
+  opacity: 0;
+}
+.-loading-v {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -118.5px;
+  margin-top: -81px;
+  display: inline-block;
+  background-image: url("assets/images/velocity-v.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 237px;
+  height: 162px;
+  z-index: 51;
+}
+.-loading-gear {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline;
+  background-image: url("assets/images/gear-icon.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 100px;
+  height: 100px;
+  -webkit-transition: margin-left 2s ease;
+  transition: margin-left 2s ease;
+  opacity: 0;
+}
+.-loading-gear.spin-left {
+  -webkit-animation: spin-left 4s infinite linear;
+  animation: spin-left 4s infinite linear;
+  top: 50%;
+  left: 50%;
+  margin-top: -117px;
+  margin-left: -165px;
+  z-index: 50;
+}
+.-loading-gear.spin-right {
+  -webkit-animation: spin-right 5s infinite linear;
+  animation: spin-right 5s infinite linear;
+  top: 50%;
+  left: 50%;
+  margin-left: 50px;
+  margin-top: -15px;
+  z-index: 52;
+}
+.slothPos{
+      text-align: right;
+    margin-bottom: -35px;
+}
+.-next-btn {
+  width: 96px;
+  height: 96px;
+ 
+  
+  background-size: 38px 38px;
+  -webkit-animation-name: nextshow;
+  animation-name: nextshow;
+  -webkit-animation-duration: .750s;
+  animation-duration: .750s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+.-next-btn:not([disabled]):hover {
+  -webkit-transform:scale(1.2);
+  transform:scale(1.2);   
+}
+.-medal-btn {
+  width: 100px;
+  height: 88px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+}
+.-medal-btn > div {
+  border-radius: inherit!important;
+  margin: 0;
+  display: inline-block;
+  background-color: #809AE8;
+  background-size: 45px 45px;
+  -webkit-animation-name: starshow;
+  animation-name: starshow;
+  -webkit-animation-duration: .600s;
+  animation-duration: .600s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+.-medal-btn:hover > div {
+  background-color: #809AE8!important;
+}
+  
+  .-inner-container {
+  border: 1px solid transparent;
+  height: 442px;
+  box-sizing: border-box;
+  width: 690px;
+  position: relative;
+  left: 103px;
+ /* margin-top: 40px;*/
+      text-align: center;
+    margin: 0px auto;
+    margin-top: 170px;
+}
+.-tint-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #DFEBFF;
+  opacity: 0.2;
+  z-index: 88;
+}
+.vslapp_skin-Snow .-spine-bg {
+  background-image: url("assets/images/velocityVitals_characterBG.svg");
+}
+.vslapp_skin-Planet .-spine-bg {
+  background-image: url("assets/images/velVitals_characterBG_orangePlanet.svg");
+}
+.vslapp_skin-Underwater .-spine-bg {
+  background-image: url("assets/images/velVitals_characterBG_underwater.svg");
+}
+
+.-spine-bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 300px;
+  width: 300px;
+  overflow: hidden;
+  display: inline-block;
+  position: absolute;
+  top: 50px;
+  right: -35px;
+}
+.-spine-bg > div {
+  position: absolute;
+  left: 15px;
+  top: -110px;
+}
+/*** ***/
+
+@-webkit-keyframes scaleshow {
+  0% { -webkit-transform:scale(0.3); opacity: 0.5;  }
+  50% { -webkit-transform:scale(0.5); opacity: 0.6; }
+  75% { -webkit-transform:scale(0.7); opacity: 0.7; }
+  100% {-webkit-transform:scale(1.0); opacity: 1.0; }
+}
+@keyframes scaleshow {
+  0% { -webkit-transform:scale(0.3); transform:scale(0.3); opacity: 0.5;  }
+  50% { -webkit-transform:scale(0.5); transform:scale(0.5); opacity: 0.6;  }
+  75% { -webkit-transform:scale(0.7); transform:scale(0.7); opacity: 0.7;  }
+  100% { -webkit-transform:scale(1.0); transform:scale(1.0); opacity: 1.0;  }
+}
+@-webkit-keyframes nextshow {
+  0% { -webkit-transform:scale(0.3); transform:scale(0.3);  }
+  50% { -webkit-transform:scale(1.3); transform:scale(1.3);  }
+  75% { -webkit-transform:scale(0.6); transform:scale(0.6);  }
+  100% { -webkit-transform:scale(1.0); transform:scale(1.0);  }
+}
+@keyframes nextshow {
+  0% { -webkit-transform:scale(0.3); transform:scale(0.3);  }
+  50% { -webkit-transform:scale(1.3); transform:scale(1.3);  }
+  75% { -webkit-transform:scale(0.6); transform:scale(0.6);  }
+  100% { -webkit-transform:scale(1.0); transform:scale(1.0);  }
+}
+@-webkit-keyframes starshow {
+  0% { background-size: 20px 20px; }
+  50% { background-size: 35px 35px; }
+  75% { background-size: 55px 55px;  }
+  100% { background-size: 45px 45px;  }
+}
+@keyframes starshow {
+  0% { background-size: 20px 20px; }
+  50% { background-size: 35px 35px; }
+  75% { background-size: 55px 55px;  }
+  100% { background-size: 45px 45px;  }
+}
+@-webkit-keyframes spin-left {
+  0%  {-webkit-transform: rotate(0deg); transform: rotate(0deg); opacity: 1; opacity: 1;}
+  100% {-webkit-transform: rotate(-360deg); transform: rotate(-360deg); opacity: 1;}  
+}
+@keyframes spin-left {
+  0%  {-webkit-transform: rotate(0deg); transform: rotate(0deg); opacity: 1;}
+  100% {-webkit-transform: rotate(-360deg); transform: rotate(-360deg); opacity: 1;} 
+}
+@-webkit-keyframes spin-right {
+  0%  {-webkit-transform: rotate(0deg); transform: rotate(0deg); opacity: 1;}
+  100% {-webkit-transform: rotate(360deg); transform: rotate(360deg); opacity: 1;} 
+}
+@keyframes spin-right {
+  0%  {-webkit-transform: rotate(0deg); transform: rotate(0deg); opacity: 1;}
+  100% {-webkit-transform: rotate(360deg); transform: rotate(360deg); opacity: 1;}
+}
+/*** ***/
+
+
+.sloth {
+  margin-top:-90px;
+  margin-left:23px;
+}
+
+
+/*** Guides ***/
+.guide {
+  border:1px dashed red!important;
+}
+/**** Guides ***/
+.-td-fixed-width {
+  min-width: 95px;
+  width: 95px;
+  vertical-align:bottom!important;
+  text-align:right!important;
+}
+.newLayout{
+  /*background-image: url('./assets/images/clouds_bgPlacement.svg');*/
+  background-repeat: no-repeat;
+  width: 1150px;
+  margin-left: auto;
+  margin-right: auto;
+ 
+}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+.newLayout{
+  /*background-image: url('./assets/images/clouds_bgPlacement.svg');*/
+  background-repeat: no-repeat;
+  width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+ 
+}
