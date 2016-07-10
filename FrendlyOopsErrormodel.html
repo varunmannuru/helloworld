@@ -1,0 +1,174 @@
+<style>
+   .popupbg{
+   background: url("../../client/vsl/velocity/views/student/errorModal/assets/landscape.svg") no-repeat ;
+   background-color: #e0e3f0;
+   }
+   .modal-body {
+   max-height: 600px;
+   overflow-y: auto;
+   padding-bottom: 15px;
+   font-size: 12px;
+   font-family: SourceSansProReg;
+   }
+   .error-title {
+   font-family: SourceSansProBold;
+   font-size: 36px;
+   font-weight: 700;
+   margin-left: 15px;
+   background-color: rgb(86, 121, 225);
+   margin: 0px;
+   height: 70px;
+   border-radius: 2px 2px 0px 0px;
+   }
+   .error-summary {
+   font-family: SourceSansProSemibold;
+   font-size: 16px;
+   font-weight: 700;
+   margin-left: 15px;
+   }
+   .btn-close {
+   background-color: #5679e0;
+   font-family: SourceSansProReg;
+   font-size: 18px;
+   color: #fff;
+   border-color: #5679e0;
+   }
+   .btn-default.btn-close:hover {
+   color: #fff;
+   background-color: rgb(57, 80, 147);
+   border-color: rgb(57, 80, 147);
+   }
+   .btn-standard {
+   font-family: SourceSansProReg;
+   font-size: 18px;
+   background-color: #5679e0;
+   color: #fff;
+   }
+   .btn-standard:hover {
+   color: #fff;
+   background-color: rgb(57, 80, 147);
+   border-color: rgb(57, 80, 147);
+   }
+   .velocityError{
+   background: url("../../client/vsl/velocity/views/student/errorModal/assets/velocity_logo_white.svg") no-repeat;
+   display: inline-block;
+   /* position: absolute; */
+   background-size: 135px;
+   background-position: 10px 50%;
+   /* top: 76px; */
+   /* left: 60px; */
+   height: 100%;
+   width: 100%;
+   }
+   .errorSloth{
+   background: url("../../client/vsl/velocity/views/student/errorModal/assets/dash_error.svg") no-repeat;
+   width: 352px !important;
+   height: 362px;
+   }
+   .title{
+   font-family: SourceSansProBold;
+   font-size: 100px;
+   color: #000000;
+   }
+   .message{
+   font-family: SourceSansProReg;
+   font-size: 26px;
+   color: #000000;
+   }
+   .return-button{
+   font-family: SourceSansProSemiBold;
+   font-size: 20px;
+   border-radius: 23px;
+   color: #ffffff;
+   }
+   .return-button > span {
+   margin-left: 10px;
+   margin-right: 12px;
+   }
+   .modal-backdrop .fade  .in{
+   opacity: 0.6 !important;
+   }
+   .return-button .icon{
+   background-image: url("../../client/vsl/velocity/views/student/errorModal/assets/icon-arrow-rt.svg");
+   background-repeat: no-repeat;
+   background-position: 100%;
+   background-size: 22px;
+   /* position: absolute; */
+   display: block;
+   height: 20px;
+   width: 20px;
+   float: right;
+   margin-left: 5px;
+   vertical-align: middle;
+   margin-top: 4px;
+   }
+   .modal-dialog{
+   width: 900px !important;
+   height: 600px !important;
+   }
+   .modal-content{
+   height: 100% !important;
+   }
+   .popupbg{
+   height: 100% !important;
+   }
+   .popup-right-container div{
+   padding: 5px;
+   }
+   .text-area{
+   height: 105px;
+   margin-top: 10px;
+   }
+   .text-field{
+   width: 100%;
+   height: 100%;
+   overflow-y: scroll;
+   }
+   .copy-button{
+   text-align: right;
+   }
+</style>
+<div class="popupbg">
+   <div>
+      <div class="error-title"><span class="velocityError"></span></div>
+      <!--  <div class="error-summary">The following error has occurred321321:</div> -->
+      <!--  <div id="errorMsg" class="modal-body scroll" ui-scroll style=" -webkit-user-select:all ;">
+         {{reason}}
+         </div> -->
+      <div  class="modal-body scroll" ui-scroll style=" -webkit-user-select:all ;">
+         <!-- <div class="errorSloth">
+            </div> -->
+         <table border='0' style="height:100%; width: 800px;
+            margin: auto;">
+            <tr>
+               <td width="50%" style="text-align: -webkit-right;">
+                  <div class="errorSloth"></div>
+               </td>
+               <td>
+                  <div class="popup-right-container">
+                     <div class="title">
+                        Oops!
+                     </div>
+                     <div class="message">
+                        We didn't expect that to happen.
+                     </div>
+                     <div>
+                        <button class="btn btn-default return-button btn-close" ng-click="close()"><span>RETURN</span><span class="icon"></span></button>
+                        <!-- <button class="return-button">RETURN</button></div> -->
+                        <div class="text-area"><textarea id="errorMsg" height="30" ng-model="reason" class="text-field">
+                           </textarea>
+                        </div>
+                        <div class="copy-button"><button class="btn btn-default btn-standard" ng-click="copyClipBoardFn()">Copy to Clipboard</button></div>
+                     </div>
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </div>
+   </div>
+</div>
+<!--  <div class="modal-footer">
+   <button class="btn btn-default btn-standard" ng-click="copyClipBoardFn()">Copy to Clipboard</button> 
+   <button class="btn btn-default btn-close" ng-click="close()">Close</button>
+   
+   </div> -->
