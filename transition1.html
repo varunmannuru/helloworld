@@ -1,0 +1,39 @@
+<div>
+   <!-- <div class="-tint-overlay">&nbsp;</div> -->
+   <div ng-hide="isUIReady() || isUIError()" class="-loadingVitals" guide>
+      <span class="-loading-gear spin-left">&nbsp;</span>
+      <span class="-loading-gear spin-right">&nbsp;</span>
+      <span class="-loading-v">&nbsp;</span>
+   </div>
+   <div ng-show="isUIError()" class="-error-container">
+      <h3>Ooops!  There seems to be a problem loading your Vital Points.</h3>
+      <next-button class="-next-btn-error" ng-click="gotoLessons()"></next-button>
+   </div>
+   <div  ng-show="isUIReady()" style="height:90%" guide>
+      <table ng-class="{'newLayout1':isIE}" class="vsl_core-tableLayout newLayout">
+         <tr>
+            <td style="width:100%">
+               <table style="height:100%;width:100%;">
+                  <tr style="vertical-align:bottom;height:100%;">
+                     <td>
+                        <div class="slothPos">
+                           <ui-spine 
+                              ng-model="character" 
+                              name="{{characterAssets.name}}"
+                              skeleton="characterAssets.skeleton"
+                              width="625"
+                              height="687"
+                              full-scale="true">
+                           </ui-spine>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </td>
+            <td class="-td-fixed-width">
+               <next-button class="-next-btn" ng-click="gotoLessons()" ng-show="showNextBtn"></next-button>
+            </td>
+         </tr>
+      </table>
+   </div>
+</div>
