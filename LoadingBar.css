@@ -1,0 +1,247 @@
+. {
+   font-family: 'SourceSansProReg';
+   height: 100%;
+   width: 100%;
+   margin: 0;
+   padding: 0;
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 1;
+}
+
+.-bgon {
+   background-image: url("../../resources/images/velocity-loading-bg.svg");
+   background-size: cover;
+   background-size: 2500px 1080px;
+   background-attachment: fixed;
+   background-repeat: no-repeat;
+   background-position: center bottom;
+}
+
+.::after {
+   content: " ";
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   background-color: #e5e9f5;
+   z-index: 88;
+}
+
+.-loading-con {
+   width: 60%;
+   height: 160px;
+   position: absolute;
+   left: 0;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   margin: auto;
+   text-align: center;
+   overflow: hidden;
+   z-index: 89;
+}
+
+.-loading {
+   width: 100%;
+   height: 8px;
+   text-align: center;
+   border-radius: 8px;
+   overflow: hidden;
+   box-sizing: border-box;
+   background-color: #9EAED3;
+   position: relative;
+   visibility: hidden;
+}
+
+.-loading.vson {
+   visibility: visible;
+}
+
+.-loading-logo {
+   width: 100%;
+   margin: 20px 0;
+   height: 50px;
+   background-color: transparent;
+}
+
+.-loading-logo.bgon {
+   background-image: url("../../resources/images/logos/velocity-loading-logo.svg");
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: 50% 50%;
+}
+
+.-loading-logo.ng-hide-remove {
+   -webkit-transition: linear 0.5s;
+   transition: linear 0.5s;
+   opacity: 1;
+}
+
+.-loading-logo.ng-hide {
+   opacity: 0;
+}
+
+.-loading > span {
+   height: 100%;
+   position: absolute;
+   left: 0;
+   background-color: #7894E7;
+   width: 0%;
+   -webkit-transition: linear 0.2s;
+   transition: linear 0.2s;
+   display: inline-block;
+   height: 100%;
+   width: 100%;
+   border: 1px solid #7894E7;
+   border-bottom-color: #7894E7;
+   background-color: rgba(120, 148, 231, 0.5);
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   -ms-border-radius: 20px;
+   border-radius: 20px;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -ms-box-sizing: border-box;
+   box-sizing: border-box;
+   background-image: -webkit-linear-gradient( -45deg, rgba(85, 121, 224, 1) 25%, transparent 25%, transparent 50%, rgba(85, 121, 224, 1) 50%, rgba(85, 121, 224, 1) 75%, transparent 75%, transparent);
+   background-image: -moz-linear-gradient( -45deg, rgba(85, 121, 224, 1) 25%, transparent 25%, transparent 50%, rgba(85, 121, 224, 1) 50%, rgba(85, 121, 224, 1) 75%, transparent 75%, transparent);
+   background-image: -ms-linear-gradient( -45deg, rgba(85, 121, 224, 1) 25%, transparent 25%, transparent 50%, rgba(85, 121, 224, 1) 50%, rgba(85, 121, 224, 1) 75%, transparent 75%, transparent);
+   background-image: linear-gradient( -45deg, rgba(85, 121, 224, 1) 25%, transparent 25%, transparent 50%, rgba(85, 121, 224, 1) 50%, rgba(85, 121, 224, 1) 75%, transparent 75%, transparent);
+   -webkit-background-size: 50px 50px;
+   -moz-background-size: 50px 50px;
+   -ms-background-size: 50px 50px;
+   background-size: 50px 50px;
+   -webkit-animation: move 2s linear infinite;
+   -moz-animation: move 2s linear infinite;
+   -ms-animation: move 2s linear infinite;
+   animation: move 2s linear infinite;
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   -ms-border-radius: 20px;
+   border-radius: 20px;
+   overflow: hidden;
+   -webkit-box-shadow: inset 0 10px 0 rgba(255, 255, 255, .2);
+   -moz-box-shadow: inset 0 10px 0 rgba(255, 255, 255, .2);
+   -ms-box-shadow: inset 0 10px 0 rgba(255, 255, 255, .2);
+   box-shadow: inset 0 10px 0 rgba(255, 255, 255, .2);
+}
+
+. h3 {
+   font-size: 24px;
+   color: #5c75b7;
+   margin: 1em 0!important;
+}
+
+
+/*
+Animate the stripes
+*/
+
+@-webkit-keyframes move {
+   0% {
+      background-position: 0 0;
+   }
+   100% {
+      background-position: 50px 50px;
+   }
+}
+
+
+/*@-moz-keyframes move {
+   0% {
+      background-position: 0 0;
+   }
+   100% {
+      background-position: 50px 50px;
+   }
+}
+
+@-ms-keyframes move {
+   0% {
+      background-position: 0 0;
+   }
+   100% {
+      background-position: 50px 50px;
+   }
+}
+
+
+@keyframes move {
+   0% {
+      background-position: 0 0;
+   }
+   100% {
+      background-position: 50px 50px;
+   }
+}
+*/
+
+
+/*Test drive*/
+
+.loader {
+   height: 10px;
+   width: 100%;
+   border-radius: 5px;
+   position: relative;
+   overflow: hidden;
+   background-color: #ddd;
+}
+
+.loader:before {
+   display: block;
+   position: absolute;
+   border-radius: 5px;
+   content: "";
+   left: -200px;
+   width: 200px;
+   height: 10px;
+   background-color: #5c75b7;
+   animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+   from {
+      left: -300px;
+      width: 20%;
+   }
+   10% {
+      width: 10%;
+   }
+   20% {
+      width: 10%;
+   }
+   30% {
+      width: 10%;
+   }
+   40% {
+      width: 10%;
+   }
+   50% {
+      width: 10%;
+   }
+   50% {
+      width: 10%;
+   }
+   70% {
+      width: 10%;
+   }
+   80% {
+      width: 10%;
+   }
+   90% {
+      width: 10%;
+   }
+   100% {
+      width: 10%;
+   }
+   to {
+      left: 100%;
+   }
+}
+
+
+}
