@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html class="no-js">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>&lt;... audio-player&gt;</title>
+<style>
+body {
+        background-color:#E5E9F5;
+        font-family: arial;
+        font-size: 18px;
+}
+td {
+        text-align:center;
+}
+nobr {
+        font-family: courier;
+}
+</style>
+       
+  </head>
+  <body ng-app="app" ng-controller="AppController">
+
+  <table border=1>
+     <tr>
+        <td><nobr></nobr></td>
+        <td><nobr>-small</nobr></td>
+        <td><nobr>-info</nobr></td>
+        <td><nobr>-info -small</nobr></td>
+        <td><nobr>-hint</nobr></td>
+        <td><nobr>-hint -small</nobr></td>
+    </tr>
+    <tr>
+       <td><icon-button audio-player="testAudio" class="-audio" radial-progress-bar></icon-button></td>
+       <td><icon-button audio-player="testAudio" class="-audio -small"></icon-button></td>
+       <td><icon-button audio-player="testAudio" class="-info" radial-progress-bar></icon-button></td>
+       <td><icon-button audio-player="testAudio" class="-info -small"></icon-button></td>
+       <td><icon-button audio-player="testAudio" class="-hint" radial-progress-bar></icon-button></td>
+       <td><icon-button audio-player="testAudio" class="-hint -small"></icon-button></td>
+    </tr>
+</table>
+
+<p>Looping audio: <icon-button audio-player="testLoopAudio" class="-audio"></icon-button>
+<p><nobr>play-on</nobr>: <input type=button ng-click="makeSimonSayPlay()" value="Click here to make button play!"> <icon-button audio-player="testAudio" play-on="simonSaysPlay" class="-audio" radial-progress-bar></icon-button>
+
+
+    <script src="../../../../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../../../../bower_components/angular/angular.js"></script>
+    <script src="../../../../bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="../../../vsl.js"></script>
+    <script src="../../../angular.q.extended.js"></script>
+    <script src="../../../angular.css.js"></script>
+    <script src="../../core.js"></script>
+    <script src="../iconButton/iconButton.js"></script>
+    <script src="../radialProgressBar/radialProgressBar.js"></script>
+    <script src="audioPlayer.js"></script>
+
+<script>
+(function($localPath){
+   angular
+      .module("app",
+              ["vsl.core.ui.iconButton",
+              "vsl.core.ui.audioPlayer",
+              "vsl.core.ui.radialProgressBar"
+              ]);
+
+   angular
+      .module("app")
+      .controller("AppController",AppController);
+
+   AppController.$inject=["$scope","$q"];
+   function AppController($scope,$q) {
+      $scope.testAudio={
+         src:"../../resources/audio/RightDing.mp3"
+      };
+      $scope.testLoopAudio={
+         src:"../../resources/audio/RightDing.mp3",
+         loop:true
+      };
+      $scope.makeSimonSayPlay=function(){
+         var d=$q.defer();
+         d.promise.then(function(){
+            console.log("done");
+         },function(){
+            console.log("aborted");
+         });
+         $scope.simonSaysPlay=d;
+      };
+   }
+})(window.location.href);
+</script>
+
+</body>
+</html>
