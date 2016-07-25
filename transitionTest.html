@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>&lt;Velocity Transition&gt;</title>
+    <style>
+      body {margin: 0;padding: 0;}
+    </style>
+  </head>
+  <body ng-app="app">
+    <velocity-transition></velocity-transition>
+
+    <script src="../../../vsl.js"></script>
+    <script>
+VSL.writeScriptsToPage(
+   "/resources/css/k5i.css",
+   "<CORE>/client/bower_components/jquery/dist/jquery.js",
+   "<CORE>/client/bower_components/jquery-ui/jquery-ui.min.js",
+   "<CORE>/client/bower_components/jplayer/dist/jplayer/jquery.jplayer.min.js",
+   "<CORE>/client/bower_components/angular/angular.js",
+   "<CORE>/client/bower_components/angular-animate/angular-animate.js",
+   "<CORE>/client/bower_components/angular-cookies/angular-cookies.js",
+   "<CORE>/client/bower_components/angular-resource/angular-resource.js",
+   "<CORE>/client/bower_components/angular-route/angular-route.js",
+   "<CORE>/client/bower_components/angular-sanitize/angular-sanitize.js",
+   "<CORE>/client/bower_components/angular-media-player/dist/angular-media-player.min.jss",
+   "<CORE>/client/bower_components/angular-touch/angular-touch.js",
+   "<CORE>/client/bower_components/angular-bootstrap/ui-bootstrap.js",
+   "<CORE>/client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
+   "<CORE>/client/bower_components/oclazyload/dist/ocLazyLoad.js",
+   "<CORE>/client/bower_components/ng-prettyjson/dist/ng-prettyjson.min.js",
+   "<CORE>/client/vsl/vsl.js",
+   "<CORE>/client/vsl/angular.q.extended.js",
+   "<CORE>/client/vsl/angular.css.js",
+   "<CORE>/client/vsl/core/core.js",
+   "<CORE>/client/vsl/core/sis/sis.js",
+   "<CORE>/client/vsl/core/ui/uiSpine/src/spine.js",
+   "<CORE>/client/vsl/core/ui/uiSpine/uiSpine.js",
+   "<CORE>/client/vsl/core/ui/audioPlayer/audioPlayer.js",
+   "../../velocity.js",
+   "velocityTransition.js"
+);
+</script>
+
+<script>
+(function($localPath){
+  angular
+  .module("app",["vsl.core.ui.audioPlayer","vsl.core.ui.spine","vsl.core.ui.velocityTransition"])
+  .config(function($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist(["**"]);
+      return;
+      $sceDelegateProvider.resourceUrlWhitelist([
+         "self",
+         "*",
+         /https?:\/\/[\w\.]+.voyagersopris.com\/.*/
+      ]);
+  })
+})(window.location.href);
+</script>
+
+
+</body>
+</html>
