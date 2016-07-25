@@ -1,0 +1,69 @@
+.-login{
+   width:348px;
+   padding:30px;
+   margin:85px auto 0;
+   border-radius:15px;
+   background-color:#ffffff;
+}
+.-login.ng-hide-remove {
+  -webkit-transition: linear 0.4s;
+  transition: linear 0.4s;
+  opacity: 1;
+}
+.-login.ng-hide {
+  opacity: 0;
+}
+.-login H3{
+   margin:0;
+   text-align:center;
+   font-size:50px;
+   padding-bottom:15px;
+}
+.-login H3 IMG {
+   width:288px;
+   height:60px;
+}
+.-login-error{
+   font-size: 12px;
+   font-weight: 700;
+   color: red;
+   margin: 20px 0;
+   text-align: center;
+}
+.-login INPUT[type="text"],
+.-login INPUT[type="password"]{
+   border: 1px solid #939598;
+   font-size: 14px;
+   color: #737474;
+   background-color: rgb(250,255,189);
+}
+.-login .-input-control{
+   display: block;
+   outline: none;
+   width: 100%;
+   height: 46px;
+   border: none;
+   margin-bottom: 12px;
+   border-radius: 5px;
+   padding: 0 15px;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+.-login .-btn-login {
+   margin-top: 30px;
+   margin-bottom: 0;
+   color: #ffffff;
+   font-size: 20px;
+   cursor: pointer;
+   background-color: #5679e0;
+   font-family: SourceSansProReg;
+}
+.-logo {
+   width:288px;
+   height:60px;
+   background-image: url("/client/vsl/velocity/resources/images/logos/velocity_logo_blue.svg");
+   background-repeat: no-repeat;
+   background-position: 50% 50%;
+   margin-bottom:15px;
+}
