@@ -1,0 +1,28 @@
+<div class="-footer" ng-show="copyrightUIReady">
+   <span class="-left">
+      <!-- -----vvvvv----- TODO: No Live Chat available -->
+      <span class="-email" ng-click="emailClicked()">E-mail Support</span>
+      <!-- -----^^^^^----- -->
+      <!-- -----vvvvv----- TODO: Live Chat is available -->
+      <!--
+      <span class="-email -pipe" ng-click="emailClicked()">E-mail Support</span>
+      <span class="-chat -on" ng-click="chatClicked()">Live Chat</span>
+      -->
+      <!-- -----^^^^^----- -->
+   </span>
+   <span class="-right">
+      <!-- -----vvvvv----- ALTERNATE ACCESS -->
+      <span class="-alternateAccess" ng-if="alternateAccessEnabled">
+         <span class="-icon -icon_box -c" ng-click="alternateAccessClicked('C')" ng-if="access.indexOf('C')>-1">C</span>
+         <span class="-icon -icon_box -d" ng-click="alternateAccessClicked('D')" ng-if="access.indexOf('D')>-1" data-core-debug tablet="true">D</span>
+         <span class="-icon -icon_box -s" ng-click="alternateAccessClicked('S')" ng-if="access.indexOf('S')>-1">S</span>
+      </span>
+      <!-- -----^^^^^----- ALTERNATE ACCESS -->
+      <span class="-credits -pipe" ng-if="credits" ng-click="creditsClicked()">Photo Credits</span>
+      <span class="-symbol" ng-click="symbolClicked()" key-press-events data-core-debug>&#169;</span>
+      <span class="-pipe">{{copyrightYear}} Voyager Sopris Learning, Inc. All Rights Reserved.</span>
+      <span class="-privacy" ng-click="privacyClicked()" ng-class="!noTermsOfUse?'-pipe':''">PRIVACY POLICY</span>
+      <span class="-terms" ng-click="termsClicked()" ng-if="!noTermsOfUse">Terms Of Use</span>
+   </span>
+   <span class="-serverInfo" ng-if="serverInfoVisible">SERVER INFORMATION &#10148; <span class="-serverDetails"></span></span>
+</div>
