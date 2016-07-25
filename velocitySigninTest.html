@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html class="no-js">
+<head>
+   <meta charset="UTF-8"/>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title>&lt;views | common | signin&gt;</title>
+   <link rel="stylesheet" type="text/css" href="../../../app.css">
+   <link rel="stylesheet" type="text/css" href="../../../resources/fonts/fonts.css">
+   <link rel="stylesheet" type="text/css" href="signin.css">
+   <style type="text/css" ></style>
+   <style>
+      BODY{
+         margin:0;
+      }
+   </style>
+</head>
+<body ng-app="app" ng-controller="AppController">
+   <div class="body-bg-image signin">
+      <signin></signin>
+   </div>
+   <copyright></copyright>
+
+<script src="http://dev.core.voyagersopris.com/client/bower_components/jquery/dist/jquery.js"></script>
+<script src="http://dev.core.voyagersopris.com/client/bower_components/angular/angular.js"></script>
+<script src="http://dev.core.voyagersopris.com/client/bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="http://dev.core.voyagersopris.com/client/bower_components/angular-animate/angular-animate.js"></script>
+<script src="http://dev.core.voyagersopris.com/client/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="http://dev.core.voyagersopris.com/client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="http://dev.core.voyagersopris.com/client/bower_components/ua-parser-js/dist/ua-parser.min.js"></script>
+<script src="http://dev.core.voyagersopris.com/client/vsl/vsl.js"></script>
+<script src="http://dev.core.voyagersopris.com/client/vsl/angular.q.extended.js"></script>
+<script src="http://dev.core.voyagersopris.com/client/vsl/angular.css.js"></script>
+<script src="http://dev.core.voyagersopris.com/client/vsl/core/core.js"></script>
+<script src="../../../app.js"></script>
+<script src="../../../app/services.js"></script>
+<script src="../../../app/directives.js"></script>
+<script src="../../../ui/popupModal/popupModal.js"></script>
+<script src="../../../ui/copyright/copyright.js"></script>
+<script src="../privacyPolicy/privacyPolicy.js"></script>
+<script src="../termsOfUse/termsOfUse.js"></script>
+<script src="signin.js"></script>
+
+<script>
+   (function($localPath){
+      angular
+            .module("app",[
+               "ngCookies",
+               "angular.css",
+               "ui.bootstrap",
+               "vsl.velocity.app.services",
+               "vsl.velocity.ui.popupModal",
+               "vsl.velocity.ui.copyright",
+               "vsl.velocity.views.common.privacyPolicy",
+               "vsl.velocity.views.common.termsOfUse",
+               "vsl.velocity.views.common.signin"
+            ]);
+
+      angular
+            .module("app")
+            .controller("AppController",AppController);
+
+      AppController.$inject=["$scope","$timeout"];
+      function AppController($scope,$timeout) {
+
+      }
+   })(window.location.href);
+</script>
+
+</body>
+</html>
