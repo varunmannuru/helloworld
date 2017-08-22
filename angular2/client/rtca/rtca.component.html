@@ -1,0 +1,232 @@
+<div class="container-fluid">
+
+        <div class="row">
+        <div class="col-sm-5">
+           
+        </div>
+        <div class="col-sm-4">
+            <h2 style="color: #005379;"> RTCA </h2>
+        </div>
+        </div>
+
+</div>
+<section >
+<div class="row" *ngIf="alienNmbr">
+    <div class="col-sm-12" style="padding-left: 0;padding-right: 0">
+            <div class="card card-outlined style-primary">
+              <div class="card-head" style="min-height: 0px!important;">
+                <h3 style="color: #005379; margin-left: 10px;"><i class="fa fa-user"></i>&nbsp; Client information </h3>
+              </div><!--end .card-head -->
+              <div class="card-body" style="padding: 9px!important;">
+                <div class="row">
+                  <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div >
+                                    <label for="alienNumber">Alien / Client Number: </label>
+                                    <span > {{clientId}}</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div >
+                                    <label for="firstName">First Name: </label>
+                                    <span> {{firstName}}</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="middleName">Middle Name: </label>
+                                 <span> {{middleName}}</span>
+                            </div>
+                            
+                            </div>
+                            <div class="row">
+                                    <div class="col-sm-4">
+                                        <div >
+                                        <label for="lastName">Last Name: </label>
+                                         <span > {{lastName}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div>
+                                            <label for="gender">Gender: </label>
+                                            <span > {{gender}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div>
+                                        <label for="ssn">SSN: </label>
+                                         <span > {{ssn}}</span>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                        <div>
+                                            <label for="addressStreet1">Street: </label>
+                                            <span > {{addressStreet1}}</span>
+                                        </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div>
+                                        <label for="adddressZip">Zip Code: </label>
+                                        <span > {{adddressZip}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div>
+                                        <label for="addressCity">City: </label>
+                                        <span > {{addressCity}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div>
+                                        <label for="addressCounty">County: </label>
+                                        <span > {{addressCounty}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div >
+                                        <label for="addressStateCode">State: </label>
+                                        <span > {{addressStateCode}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div >
+                                        <label for="primLang">Primary Language: </label>
+                                        <span > {{primLang}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                  </div>
+                  <div class="col-sm-3">
+                       <app-navigation  
+                       [stepsInvolved]="stepsInvolved" 
+                       [stepsCompleted]="stepsCompleted"
+                       [currentStep]="currentStep"></app-navigation>
+                  </div>
+              </div>
+              <hr> 
+              
+              <div class="row" style="padding: 10px;">
+                  <div class="card-head" style="min-height: 0px!important;">
+                    <h3 style="color: #005379; margin-left: 10px;"><i class="fa fa-user"></i>&nbsp; Active Family Members In Program</h3>
+                </div><!--end .card-head -->
+                    <div class="table-responsive" >
+                        <table id="datatable1" class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Relation to primary client</th>
+                            <th>Date of birth</th>
+                            <th>Date of arrival</th>
+                            <th>Sex</th>
+                            <th>Country of origin</th>
+                            <th>Immigration status</th>
+                            <th>Alien number</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a (click)="toggleAdd()" class="cursor-hand">
+                                            <span class="glyphicon glyphicon-plus-sign"></span>
+                                    </a>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+              <form class="form"  novalidate (ngSubmit)="onSubmit(clientSearchRequest)"  [formGroup]="clientSearchRequest">
+          
+            <div>
+              <div class="card-body" style="padding: 7px!important;" >
+                <div class="row"  [ngClass]="{'hide-the-step': showSearch }">
+                    <div class="col-sm-4">
+
+                    </div>
+                    <div class="col-sm-3">
+                            <div class="form-group">
+                                    <select id="alienNmb" class="form-control" >
+                                        <option *ngFor="let alienNmb of otherAlienNmbrs" [value]="alienNmb">{{alienNmb}}</option>
+                                    </select>
+                            </div>
+                            
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" [disabled]="clientSearchRequest.invalid">ADD</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+
+                    </div>
+                  
+                </div>
+              </div><!--end .card-body -->
+
+            </div><!--end .card -->
+
+          </form>
+
+           <div class="row" style="padding: 10px;">
+                  <div class="card-head" style="min-height: 0px!important;">
+                    <h3 style="color: #790000; margin-left: 10px;"><i class="fa fa-user"></i>&nbsp; Detached Family Members From Program</h3>
+                </div><!--end .card-head -->
+                    <div class="table-responsive" >
+                        <table id="datatable1" class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Relation to primary client</th>
+                            <th>Date of birth</th>
+                            <th>Date of arrival</th>
+                            <th>Sex</th>
+                            <th>Country of origin</th>
+                                <th>Immigration status</th>
+                                <th>Alien number</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    1
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+              </div><!--end .card-body -->
+            </div><!--end .card-outline -->
+             
+
+          <!-- body end -->
+        </div>
+        
+      </div>
+
+</section>

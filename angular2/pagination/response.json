@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "alienNmbr": 12345,
+            "clientId": 2,
+            "firstName": "Imthi",
+            "lastName": "Imthias",
+            "dateOfBirth": "05/14/2006",
+            "entryDate": "04/26/2017"
+        },
+        {
+            "alienNmbr": 12787,
+            "clientId": 4,
+            "firstName": "Rom",
+            "lastName": "Reddy",
+            "dateOfBirth": "02/07/2009",
+            "entryDate": "04/24/2017"
+        },
+        {
+            "alienNmbr": 120918,
+            "clientId": 5,
+            "firstName": "Hemamalini",
+            "lastName": "asdfasdfadsfadsfsdfasdfasdf",
+            "dateOfBirth": "11/04/2011",
+            "entryDate": "04/23/2017"
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+
+/* footer styles */
+    .footerMORRA {
+        background-color:#000000;
+        margin-top:1px; 
+        color:#ffffff; 
+        font-size:8pt; 
+        height:125px;
+    
+        }
+    	.footerMORRA a, .footerMORRA a:visited {
+            font-size:.75em; 
+            color:#ffffff;
+            }
+    	.addressDHR {
+            width:350px; 
+            /*height:300px;   P: this fixed footer to bottom*/
+            float:left; 
+            font-size:8pt;
+            padding-left:.5em;
+            }
+    		.addressDHR p {
+                line-height:1.75em; 
+                margin:.25em 0;
+                }
+    	.mainMORRA_FooterNav {
+            display:block; 
+            height:100px; 
+            width:350px; 
+            float:left;
+            }
+    	.mainMORRA_FooterNav ul {
+            list-style-type:none;
+            }
+    	.mainMORRA_FooterNav ul li {
+            display:block; 
+            list-style-type:none;
+            }

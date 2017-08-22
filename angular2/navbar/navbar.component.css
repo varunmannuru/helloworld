@@ -1,0 +1,146 @@
+.mainMORRA_Nav {
+    /*overflow: hidden;*/
+    height: 50px;
+    background-color: #04518c;
+    font-family: Arial;
+      border-bottom:1px solid grey;
+    font-variant:small-caps;
+}
+
+.mainMORRA_Nav a {
+    float: left;
+    font-size: 14px;
+    color: white; /* this should be white*/
+    text-align: center;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-variant:small-caps;
+}
+
+
+
+.mainMORRA_Nav a:hover, .dropdown-mora:hover .dropbtn {
+    border-bottom:1px solid #00a1d9;
+}
+
+.dropdown-mora {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown-mora .dropbtn {
+    font-size: 14px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 15px 25px;
+    background-color: inherit;
+    font-variant:small-caps;
+}
+
+.mainMORRA_Subnav {
+    display: none;
+    position: absolute;
+    background-color: #04518c;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.mainMORRA_Subnav a {
+    float: none;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.mainMORRA_Subnav a:hover {
+    background-color: #00a1d9;
+    color: white;
+}
+
+.dropdown-mora:hover .mainMORRA_Subnav {
+    display: block;
+}
+
+.dropdown-mora:hover .mainMORRA_Nav {
+    overflow: auto;
+}
+
+
+
+/*.mainMORRA_Nav {
+    overflow: hidden;
+    background-color: #04518c;
+    font-family: Arial;
+    border-bottom:1px solid #FFFFFF;
+    font-variant:small-caps;
+}
+
+.mainMORRA_Nav a {
+    float: left;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-variant:small-caps;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 14px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 15px 25px;
+    background-color: inherit;
+    font-variant:small-caps;
+}
+
+.mainMORRA_Nav a:hover, .dropdown:hover .dropbtn {
+    border-bottom:1px solid #00a1d9;
+}
+
+.mainMORRA_Subnav {
+    display: none;
+    position: absolute;
+    background-color: #04518c;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.mainMORRA_Subnav a {
+    float: none;
+    color: #FFFFFF;
+    padding: 15px 25px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.mainMORRA_Subnav a:hover {
+    background-color: #00a1d9;
+    color: #FFFFFF;
+}
+
+.dropdown:hover .mainMORRA_Subnav {
+    display: block;
+}
+
+
+/* footer styles
+    .footerMORRA {background-color:#000000;margin-top:1px; color:#ffffff; font-size:8pt; height:125px;}
+    	.footerMORRA a, .footerMORRA a:visited {font-size:.75em; color:#ffffff;}
+    	.addressDHR {width:350px; height:300px;float:left; font-size:8pt;padding-left:.5em;}
+    		.addressDHR p {line-height:1.75em; margin:.25em 0;}
+    	.mainMORRA_FooterNav {display:block; height:100px; width:350px; float:left;}
+    	.mainMORRA_FooterNav ul {list-style-type:none;}
+    	.mainMORRA_FooterNav ul li {display:block; list-style-type:none;}*/

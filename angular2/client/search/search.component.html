@@ -1,0 +1,191 @@
+<!-- BEGIN BASE-->
+<div id="base">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-5">
+          <ol class="breadcrumb">
+            <li class="active breadcrumb-item"> <a [routerLink]="['/home/client/search']">Client Search</a></li>
+          </ol>
+        </div>
+        <div class="col-sm-4">
+          <h2 style="color: #005379;"> Client Search </h2>
+        </div>
+      </div>
+    <!-- BEGIN BLANK SECTION -->
+
+          <form class="form"  novalidate (ngSubmit)="onSubmit(clientSearchRequest)"  [formGroup]="clientSearchRequest">
+          
+            <div class="card card-outlined">
+              <div class="card-head" style="min-height: 0px!important;">
+                <h3 style="color: #005379;">&nbsp;Search Criteria</h3>
+              </div>
+              <div class="card-body" style="padding: 7px!important;">
+                <div class="row">
+                  <div class="col-sm-2">
+                     <div class="form-group">
+                       <input ngui-auto-complete
+                       formControlName="alienNmbr"
+                       [source]="alienNumbers"
+                       [list-formatter]="autocompleListFormatter"
+                       value-property-name="alienNmbr"
+                       display-property-name="alienNmbr"
+                       placeholder="Alien#"
+                       class="form-control" [ngModel]="autocompleteModel" (ngModelChange)="autoCompleteValuechange($event)"
+                        id="alienNumber"  autocomplete="off">
+                      <label for="alienNumber">Alien / Client Number</label>
+                      <div *ngIf="formErrors.alienNmbr" class="error-msg">
+                        {{ formErrors.alienNmbr }}
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="Firstname2" formControlName="firstName">
+                      <label for="Firstname2">First Name</label>
+                      <div *ngIf="formErrors.firstName" class="error-msg">
+                        {{ formErrors.firstName }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="lastName" formControlName="lastName">
+                      <label for="lastName">Last Name</label>
+                      <div *ngIf="formErrors.lastName" class="error-msg">
+                        {{ formErrors.lastName }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                   <div class="form-group">
+                          <date-picker  id="dateOfBirth"                    
+                        [(modelDate)]="dateModel" 
+                        (controlChangeEvent)="callBackGetDate($event,'dob')" (keyChangeEvent)="callBackGetDate($event,'dob')"
+                           class="form-control" formControlName="dateOfBirth" (ngModelChange)="dobChangeEvent($event)" ngDefaultControl></date-picker><br>
+                         <label for="dateOfBirth">Date of Birth</label>
+                          <div *ngIf="formErrors.dateOfBirth" class="error-msg">
+                            {{ formErrors.dateOfBirth }}
+                          </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-2">
+                  <div class="form-group">
+                     <date-picker  id="entryDate"                    
+                        [(modelDate)]="dateModel" 
+                        (controlChangeEvent)="callBackGetDate($event,'doe')" (keyChangeEvent)="callBackGetDate($event,'doe')"
+                           class="form-control" formControlName="entryDate"   ngDefaultControl></date-picker>
+                       <!--<input type='date' class="form-control" #doe [(ngModel)]='dateOfEntry'  formControlName="entryDate" /><br>-->
+                         <label for="entryDate">Date of Entry</label>
+                         <div *ngIf="formErrors.entryDate" class="error-msg">
+                            {{ formErrors.entryDate }}
+                          </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-1">
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary" [disabled]="clientSearchRequest.invalid">Search</button>
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <div class="form-group">
+                      <button type="button" class="btn btn-primary" (click)="cancel($event);"><i class="md"></i>Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </div><!--end .card-body -->
+
+            </div><!--end .card -->
+
+          </form>
+
+<client-search-pagination 
+      [clientSearchResultsAvailable]="clientSearchResultsAvailable"
+      [clientSearchResults]="clientSearchResults"
+      [totalElements]="totalElements"
+      [maxVal]="maxVal"
+      [minVal]="minVal"
+      [p]="p"
+      [size]="size"
+      [anchorEnable]="true"
+      (getPageEmitter)="getPage($event)"></client-search-pagination>
+        
+
+    <!-- BEGIN BLANK SECTION -->
+  </div><!--end #content-->
+  <!-- END CONTENT -->
+  <!-- END MENUBAR -->
+
+
+
+</div><!--end #base-->
+
+
+<!-- END BASE -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div  *ngIf="clientSearchResultsAvailable">
+          <div class="card card-outlined">
+            <div class="card-head" style="min-height: 0px!important;">
+              <h3 style="color: #005379;"> &nbsp; Client Search Results </h3>
+            </div>
+            <div class="card-body " style="padding: 17px!important;">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div *ngIf="clientSearchResults.length == 0">
+                    No clients found for the given search criteria.
+                  </div>
+                  <div *ngIf="clientSearchResults.length > 0">
+                  <div class="">
+                      <label for="View" *ngIf="totalElements >= maxVal">Showing {{minVal}} to {{maxVal}} of {{totalElements}} records</label>
+                      <label for="View" *ngIf="totalElements < maxVal">Showing {{minVal}} to {{totalElements}} of {{totalElements}} records</label>
+                  </div>
+                  <div class="table-responsive" >
+                    <table id="datatable1" class="table table-striped table-hover">
+                      <thead>
+                      <tr>
+                        <th>Client Number</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th class="sort-numeric">Date of Birth</th>
+                        <th class="sort-numeric">Date of Entry</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let result of clientSearchResults | paginate: { id: 'server',
+                                            itemsPerPage: size,
+                                            currentPage: p,
+                                            totalItems: totalElements }">
+                         <td><a [routerLink]="['/home/client/details',result.alienNmbr]">{{result.alienNmbr}}</a></td>
+                         <td>{{result.firstName}}</td>
+                         <td>{{result.lastName}}</td>
+                         <td>{{result.dateOfBirth}}</td>
+                         <td>{{result.entryDate}}</td>
+                       </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="has-text-centered">
+                      <pagination-controls   (pageChange)="getPage($event)" id="server"></pagination-controls>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>-->

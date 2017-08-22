@@ -1,0 +1,40 @@
+            <!--<br>-->
+            <table class="table table-bordered ">
+                <th class="text-center" colspan="2">Navigation</th>
+                <tr *ngFor="let step of stepsInvolved">
+                    <td>{{step}}</td>
+                    <td>
+                    <span class="glyphicon " [ngClass]="{'glyphicon-check': (checkStatus(step) === 'completed'), 'glyphicon-remove': (checkStatus(step) === 'incomplete'), 'glyphicon-pencil': (checkStatus(step) === 'current')}"></span>                        
+                    </td>
+                </tr>
+                <!--<tr>
+                    <td>Contact Information</td>
+                    <td>
+                    <span class="glyphicon glyphicon-unchecked"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Program Selection</td>
+                    <td>
+                    <span class="glyphicon glyphicon-unchecked"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Household Circumstances</td>
+                    <td>
+                    <span class="glyphicon glyphicon-unchecked"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Informed Choice</td>
+                    <td>
+                    <span class="glyphicon glyphicon-unchecked"></span>    
+                    </td>
+                </tr>
+                <tr>
+                    <td>Screening Disposition </td>
+                    <td>
+                    <span class="glyphicon glyphicon-unchecked"></span>    
+                    </td>
+                </tr>-->
+            </table>

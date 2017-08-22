@@ -1,0 +1,16 @@
+label {
+    color: #005379;
+}
+
+span {
+    font-weight: 500;
+}
+
+.hide-the-step {
+    display: none;
+}
+.inline-elm {
+    margin-left: 5px;
+    display: inline;
+    float: left;
+}

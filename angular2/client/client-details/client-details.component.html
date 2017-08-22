@@ -1,0 +1,602 @@
+<div class="container-fluid">
+
+<div class="row">
+  <div class="col-sm-5">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"> <a [routerLink]="['/home/client/search']">Client Search</a></li>
+      <li class="active breadcrumb-item">Client Details</li>
+    </ol>
+  </div>
+  <div class="col-sm-4">
+    <h2 style="color: #005379;"> Client Details </h2>
+  </div>
+</div>
+<div class="row" *ngIf="invalidAlienNumber">
+  <h2> Invalid Alien Number.</h2>
+</div>
+</div>
+<section >
+  
+
+<div class="row" *ngIf="!invalidAlienNumber">
+    <div class="col-sm-12" style="padding-left: 0;padding-right: 0">
+        <form class="form"  novalidate (ngSubmit)="onSubmit(clientInfo)"  [formGroup]="clientInfo">
+            <div class="card card-outlined style-primary" [ngClass]="{'hide-the-step': (getStepValue() !== 1) }">
+              <div class="card-head" style="min-height: 0px!important;">
+                  <!--<a type="button" class="inline-elm" style="float: right" data-toggle="modal" *ngIf="clientAddressAuditInfos.length > 0 || clientDemoAuditInfos.length > 0" data-target="#myModal">->Data Audit</a> -->
+                <!--<a class="btn" href="#"><i class="ion-ios-arrow-down"></i>Data audit</a>-->
+                <!--<div class="round-button"><div class="round-button-circle"><a data-toggle="modal" *ngIf="clientAddressAuditInfos.length > 0 || clientDemoAuditInfos.length > 0" data-target="#myModal" class="round-button">Data Audit</a></div></div>-->
+                <h3 style="color: #005379; margin-left: 10px;"><i class="fa fa-user"></i>&nbsp; Profile </h3>
+              </div><!--end .card-head -->
+              <div class="card-body" style="padding: 9px!important;">
+                <div class="row">
+                  <div class="col-sm-9">
+                
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group required" *ngIf="newClient">
+                      <input ngui-auto-complete
+                      formControlName="alienNmbr"
+                      [source]="alienNumbers"
+                      [list-formatter]="autocompleListFormatter"
+                      value-property-name="alienNmbr"
+                      display-property-name="alienNmbr"
+                      placeholder="Alien#"
+                      class="form-control" [ngModel]="alienModel" (ngModelChange)="getAlienNumbers($event)" (valueChanged)="getClientInfoForSelectedClient($event)"
+                       id="alienNumber"  autocomplete="off" />
+
+                      <!-- <input type="text" class="form-control" id="alienNumber" formControlName="alienNmbr" > -->
+                      <label for="alienNumber">Alien / Client Number</label>
+                      <small *ngIf="formErrors.alienNmbr" class="error-msg">
+                        {{ formErrors.alienNmbr }}
+                      </small>
+                    </div>
+                    <div class="form-group required" *ngIf="!newClient">
+                      <span id="alienNumber"> {{clientInfo.get("alienNmbr").value}}</span>
+                      <label for="alienNumber">Alien / Client Number</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group required">
+                      <input type="text" class="form-control" id="firstName" formControlName="firstName" >
+                      <label for="firstName">First Name</label>
+                      <small *ngIf="formErrors.firstName" class="error-msg">
+                        {{ formErrors.firstName }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="middleName" formControlName="middleName" >
+                      <label for="middleName">Middle Name</label>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group required">
+                      <input type="text" class="form-control" id="lastName" formControlName="lastName" >
+                      <label for="lastName">Last Name</label>
+                      <small *ngIf="formErrors.lastName" class="error-msg">
+                        {{ formErrors.lastName }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group required">
+                      <select id="gender" class="form-control"name="gender" formControlName="gender">
+                        <option *ngFor="let gen of genders" [value]="gen">{{gen}}</option>
+                      </select>
+
+                      <label for="gender">Gender</label>
+                      <small *ngIf="formErrors.gender" class="error-msg">
+                        {{ formErrors.gender }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="ssn" formControlName="ssn" >
+                      <label for="ssn">SSN</label>
+                      <small *ngIf="formErrors.ssn" class="error-msg">
+                        {{ formErrors.ssn }}
+                      </small>
+                    </div>
+                  </div>
+                 
+                </div>
+                <div class="row">
+                   <div class="col-sm-4">
+                    <div class="form-group required">
+                      <select id="immigrationStatusCode" class="form-control" name="immigrationStatusCode" formControlName="immigrationStatusCode">
+                        <option *ngFor="let ig of immigrationStatuses" [value]="ig.code">{{ig.name}}</option>
+                      </select>
+
+                      <label for="immigrationStatusCode">Immigration Status</label>
+                      <small *ngIf="formErrors.immigrationStatusCode" class="error-msg">
+                        {{ formErrors.immigrationStatusCode }}
+                      </small>
+                    </div>
+                  </div>
+                 <div class="col-sm-4">
+                    <div class="form-group required">
+                      <select id="secndMgntInd" class="form-control" name="secndMgntInd" formControlName="secndMgntInd">
+                        <option *ngFor="let si of secondaryMigrants" [value]="si.code">{{si.value}}</option>
+                      </select>
+                      <label for="secndMgntInd">Secondary Migrant</label>
+                      <small *ngIf="formErrors.secndMgntInd" class="error-msg">
+                        {{ formErrors.secndMgntInd }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group required">
+                      <input type='date' class="form-control" #doe [(ngModel)]='dateOfEntry'  formControlName="entryDate" /><br>
+                            <label for="dateOfEntry">Date of Entry</label>
+                      <small *ngIf="formErrors.entryDate" class="error-msg">
+                        {{ formErrors.entryDate }}
+                      </small>
+                    </div>
+                  </div>
+                  
+                </div>
+                 <div class="row">
+                   <div class="col-sm-4">
+                    <div class="form-group required">
+                      <input type='date' class="form-control" #doe [(ngModel)]='dateOfBirth'  formControlName="dateOfBirth" /><br>
+                      <label for="dateOfBirth">Date of Birth</label>
+                      <small *ngIf="formErrors.dateOfBirth" class="error-msg">
+                        {{ formErrors.dateOfBirth }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group required">
+                      <select id="countryOfOriginCode" class="form-control" name="countryOfOriginCode" formControlName="countryOfOriginCode">
+                          <option *ngFor="let i of countryOfOriginData" [value]="i.code">{{i.name}}</option>
+                      </select>
+                      <label for="countryOfOrigin">Country Of Origin</label>
+                      <small *ngIf="formErrors.countryOfOrigin" class="error-msg">
+                        {{ formErrors.countryOfOrigin }}
+                      </small>
+                    </div>
+                  </div>
+                   <div class="col-sm-4">
+                    <div class="form-group required">
+                      <input type="text" class="form-control" id="primLang" formControlName="primLang" >
+                      <label for="primLang">Primary Language</label>
+                      <small *ngIf="formErrors.primLang" class="error-msg">
+                        {{ formErrors.primLang }}
+                      </small>
+                    </div>
+                  </div>
+                  
+                </div>
+                  <div class="row">
+                      <div class="col-sm-4">
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="secndLang" formControlName="secndLang" >
+                        <label for="secndLang2">Secondary Language 1</label>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="secndLang2" formControlName="secndLang2" >
+                        <label for="secndLang2">Secondary Language 2</label>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                    <div class="form-group">
+                      <select id="providerCode" class="form-control" name="providerCode" formControlName="providerCode">
+                        <option *ngFor="let p of providers" [value]="p.code">{{p.name}}</option>
+                      </select>
+
+                      <label for="providerCode">Resettlement Agency</label>
+                      <small *ngIf="formErrors.providerCode" class="error-msg">
+                        {{ formErrors.providerCode }}
+                      </small>
+                    </div>
+                  </div>
+                  </div>
+                <div class="row">
+                  <div class="col-sm-4">
+                     <div class="form-group">
+                      <select id="maritalStatusCode" class="form-control" name="maritalStatusCode" formControlName="maritalStatusCode">
+                        <option *ngFor="let m of maritalStatus" [value]="m.code">{{m.name}}</option>
+                      </select>
+
+                      <label for="maritalStatusCode">Marital Status</label>
+                    </div>
+                  </div>
+                   <div class="col-sm-4">
+                    <div class="form-group required">
+                      <select id="engSpeaksInd" class="form-control" name="engSpeaksInd" formControlName="engSpeaksInd" (ngModelChange)="onEngSpeakIndChange($event)" >
+                        <option *ngFor="let e of englishSpeaks" [value]="e.code">{{e.value}}</option>
+                      </select>
+                      <label for="engSpeaksInd">Is English Speaker</label>
+                      <small *ngIf="formErrors.engSpeaksInd" class="error-msg">
+                        {{ formErrors.engSpeaksInd }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group required">
+                      <select id="intrptnReqdInd" class="form-control" name="intrptnReqdInd" formControlName="intrptnReqdInd">
+                        <option *ngFor="let i of interPreterNeeded" [value]="i.code">{{i.value}}</option>
+                      </select>
+                      <label for="intrptnReqdInd">Is Interpreter Needed</label>
+                      <small *ngIf="formErrors.intrptnReqdInd" class="error-msg">
+                        {{ formErrors.intrptnReqdInd }}
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+				          <div class="col-sm-4">
+                    <div class="form-group required">
+                     
+
+                      <select id="educationLevelCode" class="form-control" name="educationLevelCode" formControlName="educationLevelCode">
+                        <option *ngFor="let i of highersEducationaldata" [value]="i.code">{{i.name}}</option>
+                      </select>
+                      <label for="educationLevelCode">Highest Education Completed</label>
+                      <small *ngIf="formErrors.intrptnReqdInd" class="error-msg">
+                        {{ formErrors.educationLevelCode }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group required">
+                      <select id="previousOccupationCode" class="form-control" name="previousOccupationCode" formControlName="previousOccupationCode">
+                        <option *ngFor="let i of previousOcuupationaldata" [value]="i.code">{{i.name}}</option>
+                      </select>
+                      <label for="previousOccupationCode">Previous Occupation</label>
+                      <small *ngIf="formErrors.previousOccupationCode" class="error-msg">
+                        {{ formErrors.previousOccupationCode }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                  </div>
+                </div>
+                <div class="row">
+				          <div class="col-sm-4">
+                    <div class="form-group required">
+                      <select id="primaryApplicantInd" #primAppInd class="form-control" name="primaryApplicantInd" formControlName="primaryApplicantInd" (ngModelChange)="onPrimaryApplicantIndChange($event)">
+                        <option *ngFor="let i of primaryApplicantData" [value]="i.code">{{i.value}}</option>
+                      </select>
+                      <label for="primaryApplicantInd">Are you the Primary Applicant</label>
+                     
+                    </div>
+                  </div>
+                  <div class="col-sm-4" *ngIf="primAppInd.value == 'N'">
+                    <div class="form-group required">
+                      <input ngui-auto-complete
+                      formControlName="primaryApplicantAlienNmbr"
+                      [accept-user-input]="false"
+                      [source]="primaryAlienNumbers"
+                      [list-formatter]="autocompleListFormatter"
+                      value-property-name="alienNmbr"
+                      display-property-name="alienNmbr"
+                      placeholder="Primary Alien#"
+                      class="form-control"  [ngModel]="primaryAlienModel" (ngModelChange)="getPrimaryAlienNumbers($event)" 
+                       id="primaryAlienNumber"  autocomplete="off" />
+                      <label for="primaryApplicantAlienNmbr">Choose a primary Applicant</label>
+                      <small *ngIf="formErrors.primaryApplicantAlienNmbr" class="error-msg">
+                        {{ formErrors.primaryApplicantAlienNmbr }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-sm-4" *ngIf="primAppInd.value == 'N'">
+                    <div class="form-group required">
+                      <select id="relationShipCode" class="form-control" name="relationShipCode" formControlName="relationShipCode">
+                        <option *ngFor="let i of relationShipData" [value]="i.code">{{i.name}}</option>
+                      </select>
+                      <label for="relationShipCode">Relationship to Primary Applicant</label>
+                      <small *ngIf="formErrors.relationShipCode" class="error-msg">
+                        {{ formErrors.relationShipCode }}
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                  <div class="col-sm-3">
+                       <app-navigation  
+                       [stepsInvolved]="stepsInvolved" 
+                       [stepsCompleted]="stepsCompleted"
+                       [currentStep]="currentStep"></app-navigation>
+                  </div>
+              </div>
+              </div><!--end .card-body -->
+            </div>
+             <div class="card card-outlined style-primary" [ngClass]="{'hide-the-step': (getStepValue() !== 2) }">
+              <div class="card-head" style="min-height: 0px!important;">
+                 <!--<div class="round-button"><div class="round-button-circle"><a data-toggle="modal" *ngIf="clientAddressAuditInfos.length > 0 || clientDemoAuditInfos.length > 0" data-target="#myModal" class="round-button">Data Audit</a></div></div>-->
+                <h3 style="color: #005379; margin-left: 10px;"> <i class="fa fa-map-marker"></i>&nbsp;Contact Information </h3>
+              </div>
+              <div class="card-body" style="padding: 9px!important;">
+                 <div class="row">
+                  <div class="col-sm-9">
+              <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="homePhone" formControlName="homePhone" >
+                      <label for="homePhone">Home Phone</label>
+                      <small *ngIf="formErrors.homePhone" class="error-msg">
+                        {{ formErrors.homePhone}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="cellPhone" formControlName="cellPhone" >
+                      <label for="cellPhone">Cell Phone</label>
+                      <small *ngIf="formErrors.cellPhone" class="error-msg">
+                        {{ formErrors.cellPhone }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="emailAddr" formControlName="emailAddr" >
+                      <label for="emailAddr">Email</label>
+                      <small *ngIf="formErrors.emailAddr" class="error-msg">
+                        {{ formErrors.emailAddr }}
+                      </small>
+                    </div>
+                  </div>
+                 
+                </div>
+                 <div class="row">
+                    <div class="col-sm-4">
+                    <div class="form-group required">
+                      <input type="text" class="form-control" id="addressStreet1" formControlName="addressStreet1" >
+                      <label for="addressStreet1">Street</label>
+                      <small *ngIf="formErrors.addressStreet1" class="error-msg">
+                        {{ formErrors.addressStreet1 }}
+                      </small>
+                    </div>
+                  </div>
+                   <div class="col-sm-4">
+                     <div class="form-group required">
+                       <input type="text" class="form-control" id="adddressZip" (focusout)="zipChange()" formControlName="adddressZip" >
+                       <label for="adddressZip">Zip Code</label>
+                       <small *ngIf="formErrors.adddressZip" class="error-msg">
+                         {{ formErrors.adddressZip }}
+                       </small>
+                     </div>
+                   </div>
+                  <div class="col-sm-4">
+                    <div class="form-group required">
+                      <input type="text" class="form-control" id="addressCity" formControlName="addressCity" >
+                      <label for="addressCity">City</label>
+                      <small *ngIf="formErrors.addressCity" class="error-msg">
+                        {{ formErrors.addressCity}}
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group required">
+                      <input type="text" class="form-control" id="addressCounty" formControlName="addressCounty" >
+                      <label for="addressCounty">County</label>
+                      <small *ngIf="formErrors.addressCounty" class="error-msg">
+                        {{ formErrors.addressCounty }}
+                      </small>
+                    </div>
+                  </div>
+                   <div class="col-sm-4">
+                    <div class="form-group required">
+                      <select id="addressStateCode" class="form-control" name="addressStateCode" formControlName="addressStateCode" (ngModelChange)="onStateChange($event)">
+                        <option *ngFor="let s of states" [value]="s.code">{{s.name}}</option>
+                      </select>
+
+                      <label for="addressStateCode">State</label>
+                      <small *ngIf="formErrors.addressStateCode" class="error-msg">
+                        {{ formErrors.addressStateCode }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-sm-4"></div>
+                </div>
+                  </div>
+                 <div class="col-sm-3">
+                   <app-navigation 
+                  [stepsCompleted]="stepsCompleted" 
+                  [stepsInvolved]="stepsInvolved" 
+                  [currentStep]="currentStep"  ></app-navigation>
+                  </div>
+
+                  
+                 </div>
+
+              </div>
+            </div>
+           <div class="card card-outlined style-primary" *ngIf="!newClient" [ngClass]="{'hide-the-step': (getStepValue() !== 3)}">
+            <div class="card-head" style="min-height: 0px!important;">
+               <!--<div class="round-button"><div class="round-button-circle"><a data-toggle="modal" *ngIf="clientAddressAuditInfos.length > 0 || clientDemoAuditInfos.length > 0" data-target="#myModal" class="round-button">Data Audit</a></div></div>-->
+              <h3 style="color: #005379; margin-left: 10px;"> <i class="fa fa-map-marker"></i>&nbsp;Program Eligibility
+              
+              </h3>
+            </div>
+            <div class="card-body" style="padding: 9px!important;">
+            <div class="row">
+                <div class="col-sm-9">
+                  <div class="table-responsive" >
+                    <table id="datatable1" class="table table-striped table-hover">
+                      <thead>
+                      <tr>
+                        <th>Program Name</th>
+                        <th>Enroll/View Case</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                         <td>RTCA</td>
+                         <td  ><button type="button" class="btn btn-primary" [routerLink]="['/home/client/rtca-program', clientInfo.get('alienNmbr').value ]" ><i class="md"></i>Enroll</button></td>
+                        </tr>
+                        <tr>
+                         <td>RSS</td>
+                         <td><button type="button" class="btn btn-primary"><i class="md"></i>View Case</button></td>
+                        </tr>
+                        <tr>
+                         <td>TAP</td>
+                         <td><button type="button" class="btn btn-primary"><i class="md"></i>Enroll</button></td>
+                        </tr>
+                        <tr>
+                         <td>ESL</td>
+                         <td><button type="button" class="btn btn-primary"><i class="md"></i>Refer</button>
+                            <button type="button" class="btn btn-primary"><i class="md"></i>Enroll</button>
+                         </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                 <div class="col-sm-3">
+                   <app-navigation 
+                  [stepsCompleted]="stepsCompleted" 
+                  [stepsInvolved]="stepsInvolved" 
+                  [currentStep]="currentStep"  ></app-navigation>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+                  <div class="card-actionbar">
+                    <h3 > {{ saveStatus }} </h3>
+                    <div class="card-actionbar-row right-algn">
+                      <button type="button" class="btn btn-primary inline-elm" data-toggle="modal" *ngIf="clientAddressAuditInfos.length > 0 || clientDemoAuditInfos.length > 0" data-target="#myModal">Data Audit</button>
+                      
+                      <button type="button" class="btn btn-primary"  [disabled]="!clientInfo.pristine"  *ngIf="currentStep !== 1" (click)="stepFront();">Next</button>
+                      <button type="button" class="btn btn-primary"   *ngIf="currentStep === 1" (click)="stepFront();">Next</button>
+                      <button type="button" class="btn btn-primary inline-elm" *ngIf="currentStep !== 1" (click)="stepBack();">Back</button>
+                      <button type="submit" class="btn btn-primary"   [disabled]="clientInfo.invalid || !clientInfo.dirty" >Save</button>
+                      <button type="button" class="btn btn-primary" (click)="cancel($event);"><i class="md"></i>Cancel</button>
+                    </div>
+                  </div>
+          </form>
+
+
+
+
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">DATA AUDIT</h4>
+        </div>
+        <div class="modal-body">
+
+         <!-- inside modal body-->
+         <div class="card card-outlined style-primary" *ngIf="clientAddressAuditInfos.length > 0">
+            <div class="card-head" style="min-height: 0px!important;">
+              <h2 style="font-size: 20px;margin-bottom: 12px!important;margin-top: 10px!important;margin-left: 10px!important;">&nbsp;Address Changes</h2>
+            </div><!--end .card-head -->
+            <div class="card-body" style="padding: 9px!important;">
+            <div class="row">
+                <div class="col-sm-12">
+                  <div class="table-responsive">
+                    <table id="datatable1" class="table table-striped table-hover">
+                      <thead>
+                      <tr>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>County</th>
+                        <th>Zip</th>
+                        <th>Audit Type</th>
+                        <th>By</th>
+                        <th>Date</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let result of clientAddressAuditInfos">
+                         <td>{{result.address}}</td>
+                         <td>{{result.city}}</td>
+                         <td>{{result.county}}</td>
+                         <td>{{result.zip}}</td>
+                         <td>{{result.auditType}}</td>
+                         <td>{{result.auditUser}}</td>
+                         <td>{{result.auditDate}}</td>
+                       </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-outlined style-primary" *ngIf="clientDemoAuditInfos.length > 0">
+            <div class="card-head" style="min-height: 0px!important;">
+              <h2 style="font-size: 20px;margin-bottom: 12px!important;margin-top: 10px!important;margin-left: 10px!important;">&nbsp;Demographic Data Changes</h2>
+            </div><!--end .card-head -->
+            <div class="card-body" style="padding: 9px!important;">
+            <div class="row">
+                <div class="col-sm-12">
+                  <div class="table-responsive">
+                    <table id="datatable1" class="table table-striped table-hover">
+                      <thead>
+                      <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th class="sort-numeric">Date of Entry</th>
+                        <th class="sort-numeric">Date of Birth</th>
+                        <th>Home Phone</th>
+                        <th>Cell Phone</th>
+                        <th>Email Address</th>
+                        <th>Audit Type</th>
+                        <th>By</th>
+                        <th>Date</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let result of clientDemoAuditInfos">
+                         <td>{{result.firstName}}</td>
+                         <td>{{result.lastName}}</td>
+                         <td>{{result.entryDate}}</td>
+                         <td>{{result.dateOfBirth}}</td>
+                         <td>{{result.homePhone}}</td>
+                         <td>{{result.cellPhone}}</td>
+                         <td>{{result.emailAddr}}</td>
+                         <td>{{result.auditType}}</td>
+                         <td>{{result.auditUser}}</td>
+                         <td>{{result.auditDate}}</td>
+                       </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- body end -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+    </div>
+
+  </div><!--end .section-body -->
+  <!--</div>-->
+  <!--<div class="col-sm-3  ">-->
+              
+           
+  <!--</div>-->
+  <!--</div>-->
+</section>
